@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import graphDatabase.BookEdge;
 import graphDatabase.BookNode;
@@ -27,6 +30,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private Graph theGraph;
 	private ArrayList<BookNode> nodeArr;
 	private ArrayList<BookEdge> edgeArr;
+	private List<BookNode> authorList = new ArrayList<BookNode>();
 	
 	private int genreCounter;
 
@@ -79,7 +83,20 @@ public class PanelControl extends JPanel implements ActionListener {
 		bNodeTemp.addKeywords(this.arrGenres[2], this.arrGenres[1], this.arrGenres[0]);
 		this.theGraph.addNode(bNodeTemp);
 		this.nodeArr = theGraph.getNodeArr();
+		addHashKey(bNodeTemp);
 	}
+	
+	public void addHashKey(BookNode bookNode) {
+		this.hashTitle.put(bookNode);
+		this.hashAuthor.put(bookNode);
+	}
+	
+	public void getAuthorByHash(String bookTitle) {
+		this.authorList = hashTitle.get(bookTitle);
+		for (BookNode bookNode: this.authorList) {
+			System.out.println(bookNode);
+		}
+	}	
 	
 	public void showNodes() {
 		this.nodeArr.iterator();
@@ -102,11 +119,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnAuthor.addActionListener(this);
 		this.btnRelAuthor.addActionListener(this);
 	}
-	
-	
-	public void addHashKeyToBook(BookNode bookNode) {
-		this.hashTitle.put(bookNode);
-	}
+
 	
 	public void addComponentsToPanel() {
 		this.lbBook = new JLabel("Book Name:");
