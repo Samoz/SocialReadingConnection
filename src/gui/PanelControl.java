@@ -87,11 +87,13 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.hashAuthor.put(bookNode);
 	}
 	
-	public void getAuthorByHash(String bookTitle) {
+	public String getAuthorByHash(String bookTitle) {
+		String bookInfo = "";
 		this.authorList = hashTitle.get(bookTitle);
 		for (BookNode bookNode: this.authorList) {
-			System.out.println(bookNode);
+			bookInfo = bookNode.toString();
 		}
+		return bookInfo;
 	}	
 	
 	public void showNodes() {
@@ -116,7 +118,6 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnRelAuthor.addActionListener(this);
 	}
 
-	
 	public void addComponentsToPanel() {
 		this.lbBook = new JLabel("Book Name:");
 		this.lbGenre = new JLabel("Genres of the Book:");
@@ -239,6 +240,9 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.taOutput.setText("");
 			if (this.tfBook.getText().equals("")) {
 				this.taOutput.setText("Please Enter a Valid Book Name");
+			}
+			else {
+				
 			}
 		}
 		else if (e.getSource().equals(this.btnRelated)) {

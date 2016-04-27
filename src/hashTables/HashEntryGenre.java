@@ -16,22 +16,53 @@ import graphDatabase.BookNode;
  * It is not yet implemented , but it is going to be. And yes, we will have duplicated values.
  */
 public class HashEntryGenre {
-	private int key;
-	private BookNode booknode;
-	public HashEntryGenre(BookNode booknode){
-		this.key = createKey(booknode);
+	
+	private int theKey0;
+	private int theKey1;
+	private int theKey2;
+	
+	private BookNode bookNode;
+	
+	public HashEntryGenre(BookNode bookNode, int index){
+		this.bookNode = bookNode;
+		this.theKey0 = createKey0(bookNode, index);
+		this.theKey1 = createKey1(bookNode, index);
+		this.theKey2 = createKey2(bookNode, index);
 	}
-	public int getKey(){
-		return key;
+	
+	public int createKey0(BookNode bookNode, int index) {
+		return (int) bookNode.getAKeyword(index).charAt(0);
 	}
-	public BookNode getBookNodeT(){
-		return booknode;
+	
+	
+	public int createKey1(BookNode bookNode, int index) {
+		return (int) bookNode.getAKeyword(index).charAt(0);
 	}
-	private int createKey(BookNode booknode){
-		return (int)booknode.getAuthor().charAt(0);
+	
+	public int createKey2(BookNode bookNode, int index) {
+		return (int) bookNode.getAKeyword(index).charAt(1);
 	}
+	
+	public int getKey0(BookNode bookNode, int index) {
+		return this.theKey0;
+	}
+	
+	public int getKey1(BookNode bookNode) {
+		return this.theKey1;
+	}
+	
+	public int getKey3(BookNode bookNode) {
+		return this.theKey2;
+	}
+	
+	public BookNode getBookNode() {
+		return this.bookNode;
+	}
+	
 	public String toString(){
-		return "hash entry" + "key" + this.key + "author" + this.booknode;
+		return "hash entry" + "key0" + this.theKey0 + "author" + this.bookNode + 
+				"hash entry" + "key1" + this.theKey0 + "author" + this.bookNode +
+				"hash entry" + "key2" + this.theKey0 + "author" + this.bookNode;
 	}
 
 }

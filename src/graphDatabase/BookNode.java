@@ -82,7 +82,18 @@ public class BookNode implements BookNodeInterface {
 		this.keyWords[1] = keyWord2;
 		this.keyWords[2] = keyWord3;
 	}
-
+	
+	public String getAKeyword(int index) {
+		String[] tempArr = new String[3];
+		if (index < 0 || index > 2) {
+			System.out.println("Array out of bounds");
+		}
+		else {
+			tempArr[index] = this.keyWords[index];
+		}
+		return tempArr[index];
+	}
+	
 	@Override
 	public String[] getKeywords() {
 		return this.keyWords;
