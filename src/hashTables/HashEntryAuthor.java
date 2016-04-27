@@ -23,8 +23,7 @@ public class HashEntryAuthor {
 	private BookNode booknode;
 	public HashEntryAuthor(BookNode booknode){
 		this.key = createKey(booknode);
-		this.booknode = booknode;
-		
+		this.booknode = booknode;	
 	}
 	
 	/**
@@ -40,7 +39,7 @@ public class HashEntryAuthor {
 	 * Getter for the BookNode, in which we get the information that is stored in it
 	 * @return the booknode
 	 */
-	public BookNode getBookNodeT(){
+	public BookNode getBookNode(){
 		return booknode;
 	}
 	/**

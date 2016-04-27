@@ -49,8 +49,8 @@ public class HashMapAuthor {
 		int hash= (getAuthorKey(author) % TABLE_SIZE);
 		if(table[hash] != null){
 			for(int i=0;i<table[hash].size(); i++){
-				if(table[hash].get(i).getBookNodeT().getAuthor().equals(author)){
-					list.add(table[hash].get(i).getBookNodeT());
+				if(table[hash].get(i).getBookNode().getAuthor().equals(author)){
+					list.add(table[hash].get(i).getBookNode());
 				}
 				
 			}
