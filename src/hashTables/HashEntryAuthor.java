@@ -3,7 +3,7 @@
  */
 package hashTables;
 
-import graphDatabase.BookNodeT;
+import graphDatabase.BookNode;
 
 /**
  * @author Fernanda Lopez
@@ -20,8 +20,8 @@ import graphDatabase.BookNodeT;
 
 public class HashEntryAuthor {
 	private int key;
-	private BookNodeT booknode;
-	public HashEntryAuthor(BookNodeT booknode){
+	private BookNode booknode;
+	public HashEntryAuthor(BookNode booknode){
 		this.key = createKey(booknode);
 		this.booknode = booknode;
 		
@@ -40,7 +40,7 @@ public class HashEntryAuthor {
 	 * Getter for the BookNode, in which we get the information that is stored in it
 	 * @return the booknode
 	 */
-	public BookNodeT getBookNodeT(){
+	public BookNode getBookNodeT(){
 		return booknode;
 	}
 	/**
@@ -48,7 +48,7 @@ public class HashEntryAuthor {
 	 * @param booknode, made by the string the user writes as Title or Author
 	 * @return it takes the first letter of the string and returns its integer
 	 */
-	private int createKey(BookNodeT booknode){
+	private int createKey(BookNode booknode){
 		return (int)booknode.getAuthor().charAt(0);
 	}
 	/**

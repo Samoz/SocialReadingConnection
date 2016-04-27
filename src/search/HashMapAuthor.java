@@ -3,7 +3,7 @@ package search;
 import java.util.ArrayList;
 import java.util.List;
 
-import graphDatabase.BookNodeT;
+import graphDatabase.BookNode;
 import hashTables.HashEntryAuthor;
 
 
@@ -44,8 +44,8 @@ public class HashMapAuthor {
 	 * @param author the author to get the books
 	 * @return a list of the books
 	 */
-	public List<BookNodeT> get(String author){
-		List<BookNodeT> list = new ArrayList<BookNodeT>();
+	public List<BookNode> get(String author){
+		List<BookNode> list = new ArrayList<BookNode>();
 		int hash= (getAuthorKey(author) % TABLE_SIZE);
 		if(table[hash] != null){
 			for(int i=0;i<table[hash].size(); i++){
@@ -62,7 +62,7 @@ public class HashMapAuthor {
 	 * 
 	 * @param booknode once we have the correct node, we put it in our hashtable to storage
 	 */
-	public void put(BookNodeT booknode){
+	public void put(BookNode booknode){
 		HashEntryAuthor temp = new HashEntryAuthor(booknode);
 		int hash = (temp.getKey() % TABLE_SIZE);
 		table[hash].add(temp);

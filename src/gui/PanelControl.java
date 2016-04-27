@@ -17,7 +17,10 @@ import javax.swing.JTextField;
 
 import graphDatabase.BookEdge;
 import graphDatabase.BookNode;
+import graphDatabase.BookNode;
 import graphDatabase.Graph;
+import search.HashMapAuthor;
+import search.HashMapTitle;
 
 public class PanelControl extends JPanel implements ActionListener {
 
@@ -54,7 +57,12 @@ public class PanelControl extends JPanel implements ActionListener {
 	private JButton btnAuthor;
 	private JButton btnRelAuthor;
 	
+	private HashMapAuthor hashAuthor;
+	private HashMapTitle hashTitle;
+	
 	public PanelControl() {
+		this.hashAuthor = new HashMapAuthor();
+		this.hashTitle = new HashMapTitle();
 		this.theGraph = new Graph();
 		this.genreCounter = 0;
 		this.arrGenres = new String[3];
@@ -65,7 +73,41 @@ public class PanelControl extends JPanel implements ActionListener {
 		setComponentsCharacteristics();
 		addActionsToButtons();
 	}
+	
+	public void addNodeToGraph() {
+		BookNode bNodeTemp = new BookNode(this.tfBook.getText(), this.tfFirstName.getText(), this.tfLastName.getText());
+		bNodeTemp.addKeywords(this.arrGenres[2], this.arrGenres[1], this.arrGenres[0]);
+		this.theGraph.addNode(bNodeTemp);
+		this.nodeArr = theGraph.getNodeArr();
+	}
+	
+	public void showNodes() {
+		this.nodeArr.iterator();
+	}
 
+	public String getBookName() {
+		return this.tfBook.getText();
+	}
+
+	public String[] getArrGenres() {
+		return this.arrGenres;
+	}
+
+	public void addActionsToButtons() {
+		this.btnAdd.addActionListener(this);
+		this.btnSearch.addActionListener(this);
+		this.btnRelated.addActionListener(this);
+		this.btnGenre.addActionListener(this);
+		this.btnCancel.addActionListener(this);
+		this.btnAuthor.addActionListener(this);
+		this.btnRelAuthor.addActionListener(this);
+	}
+	
+	
+	public void addHashKeyToBook(BookNode bookNode) {
+		this.hashTitle.put(bookNode);
+	}
+	
 	public void addComponentsToPanel() {
 		this.lbBook = new JLabel("Book Name:");
 		this.lbGenre = new JLabel("Genres of the Book:");
@@ -111,7 +153,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.add(this.btnRelAuthor);
 		this.add(this.taOutput);
 	}
-
+	
 	public void setBoundsToComponents() {
 		this.lbBook.setBounds(10, 10, this.lbBook.getPreferredSize().width, 30);
 		this.tfBook.setBounds(this.lbBook.getX() + this.lbBook.getWidth(), 10, this.getPreferredSize().width - this.lbBook.getWidth() - 20, 30);
@@ -146,36 +188,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.taInfo.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		this.taOutput.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 	}
-
-	public void addNodeToGraph() {
-		BookNode bNodeTemp = new BookNode(this.tfBook.getText(), this.tfFirstName.getText(), this.tfLastName.getText());
-		bNodeTemp.addKeywords(this.arrGenres[2], this.arrGenres[1], this.arrGenres[0]);
-		this.theGraph.addNode(bNodeTemp);
-		this.nodeArr = theGraph.getNodeArr();
-	}
 	
-	public void showNodes() {
-		this.nodeArr.iterator();
-	}
-
-	public String getBookName() {
-		return this.tfBook.getText();
-	}
-
-	public String[] getArrGenres() {
-		return this.arrGenres;
-	}
-
-	public void addActionsToButtons() {
-		this.btnAdd.addActionListener(this);
-		this.btnSearch.addActionListener(this);
-		this.btnRelated.addActionListener(this);
-		this.btnGenre.addActionListener(this);
-		this.btnCancel.addActionListener(this);
-		this.btnAuthor.addActionListener(this);
-		this.btnRelAuthor.addActionListener(this);
-	}
-
 	public void enableComponents() {
 		this.tfBook.setText("");
 		this.tfFirstName.setText("");
@@ -194,7 +207,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnCancel.setEnabled(false);
 		
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(this.btnAdd)) {

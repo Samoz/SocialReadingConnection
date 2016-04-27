@@ -3,7 +3,7 @@ package graphDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import graphDatabase.BookNodeT;
+import graphDatabase.BookNode;
 import gui.TheFrame;
 import search.HashMapAuthor;
 import search.HashMapTitle;
@@ -24,8 +24,6 @@ public class MainGDB {
 	public static void main(String args[]) {
 		
 		TheFrame theFrame = new TheFrame();
-		
-		
 		
 		/*HashMapTitle hashTitle = new HashMapTitle();
 		HashMapAuthor hashAuthor = new HashMapAuthor();

@@ -1,6 +1,6 @@
 package hashTables;
 
-import graphDatabase.BookNodeT;
+import graphDatabase.BookNode;
 
 /**
  * @author Fernanda Lopez
@@ -16,8 +16,8 @@ import graphDatabase.BookNodeT;
 
 public class HashEntryTitle {
 		private int key;
-		private BookNodeT booknode;
-		public HashEntryTitle(BookNodeT booknode){
+		private BookNode booknode;
+		public HashEntryTitle(BookNode booknode){
 			this.key = createKey(booknode);
 			this.booknode = booknode;
 		}
@@ -32,7 +32,7 @@ public class HashEntryTitle {
 		 * 
 		 * @return the node that has the information stored about the book
 		 */
-		public BookNodeT getBookNodeT(){
+		public BookNode getBookNodeT(){
 			return booknode;	
 		}
 		/**
@@ -40,8 +40,8 @@ public class HashEntryTitle {
 		 * @param booknode, from the information that, right now we write in the node but it will be a database
 		 * @return an integer made from the first letter of the String
 		 */
-		private int createKey(BookNodeT booknode){
-			return (int)booknode.getTitle().charAt(0);
+		private int createKey(BookNode booknode){
+			return (int)booknode.getBookTitle().charAt(0);
 		}
 		/**
 		 * User for testing purposes, just to make sure that the program is printing the correct information
