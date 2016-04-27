@@ -11,15 +11,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import graphDatabase.BookEdge;
-import graphDatabase.BookNode;
 import graphDatabase.BookNode;
 import graphDatabase.Graph;
 import search.HashMapAuthor;
