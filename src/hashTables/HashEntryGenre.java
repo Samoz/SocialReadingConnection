@@ -1,5 +1,7 @@
 package hashTables;
 
+import graphDatabase.BookNode;
+
 /**
  * @author Fernanda Lopez
  * @author Samuel Osuna
@@ -14,5 +16,22 @@ package hashTables;
  * It is not yet implemented , but it is going to be. And yes, we will have duplicated values.
  */
 public class HashEntryGenre {
+	private int key;
+	private BookNode booknode;
+	public HashEntryGenre(BookNode booknode){
+		this.key = createKey(booknode);
+	}
+	public int getKey(){
+		return key;
+	}
+	public BookNode getBookNodeT(){
+		return booknode;
+	}
+	private int createKey(BookNode booknode){
+		return (int)booknode.getAuthor().charAt(0);
+	}
+	public String toString(){
+		return "hash entry" + "key" + this.key + "author" + this.booknode;
+	}
 
 }

@@ -1,5 +1,11 @@
 package search;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import hashTables.HashEntryGenre;
+
+
 /**
  * @author Fernanda Lopez
  * @author Samuel Osuna
@@ -11,5 +17,16 @@ package search;
  * using a heap our nodes will be sorted from most favorite to less.
  */
 public class HashMapGenre {
-
+	private final static int TABLE_SIZE = 300;
+	private List<HashEntryGenre>[] table;
+	public HashMapGenre(){
+		table = new List[TABLE_SIZE];
+		for(int i=0;i < TABLE_SIZE; i++){
+			table[i] = new ArrayList<HashEntryGenre>();
+		}
+	}
+	public int getGenreKey(String genre){
+		return (int)genre.charAt(0);
+	
+	}
 }
