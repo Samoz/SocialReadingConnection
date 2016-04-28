@@ -80,15 +80,24 @@ public class HashMapGenre {
 
 	} 
 
-	/*public void put(BookNode booknode){
-		HashEntryAuthor temp = new HashEntryAuthor(booknode);
-		int hash = (temp.getKey() % TABLE_SIZE);
-		table[hash].addAll(temp);
+	public void put0(BookNode booknode){
+		HashEntryGenre temp = new HashEntryGenre(booknode,0);
+		int hash = (temp.getKey0(booknode) % TABLE_SIZE);
+		table[hash].add(temp);
 
-	} */
+	} 
+	public void put1(BookNode booknode){
+		HashEntryGenre temp = new HashEntryGenre(booknode,1);
+		int hash = (temp.getKey1(booknode) % TABLE_SIZE);
+		table[hash].add(temp);
 
-	public void add(BookNode book) {
-		System.out.println("Hola");
+	} 
+	public void put2(BookNode booknode){
+		HashEntryGenre temp = new HashEntryGenre(booknode ,2);
+		int hash = (temp.getKey2(booknode) % TABLE_SIZE);
+		table[hash].add(temp);
+		
 	}
 
+	
 }
