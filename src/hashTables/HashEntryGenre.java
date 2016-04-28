@@ -43,7 +43,7 @@ public class HashEntryGenre {
 		return (int) bookNode.getAKeyword(index).charAt(1);
 	}
 	
-	public int getKey0(BookNode bookNode, int index) {
+	public int getKey0(BookNode bookNode) {
 		return this.theKey0;
 	}
 	
