@@ -36,8 +36,8 @@ public class HashMapGenre {
 	public int getGenreKey2(String genre){
 		return (int)genre.charAt(0);
 	}
-	
-		public List<BookNode> getGenre0(String genre){
+
+	public List<BookNode> getGenre0(String genre){
 		List<BookNode> list0 = new ArrayList<BookNode>();
 		int hash= (getGenreKey0(genre) % TABLE_SIZE);
 		if(table[hash] != null){
@@ -45,48 +45,50 @@ public class HashMapGenre {
 				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
 					list0.add(table[hash].get(i).getBookNode());
 				}
-				
+
 			}
 		}
 		return list0;
-		
+
 	} 
-		public List<BookNode> getGenre1(String genre){
-			List<BookNode> list1 = new ArrayList<BookNode>();
-			int hash= (getGenreKey0(genre) % TABLE_SIZE);
-			if(table[hash] != null){
-				for(int i=0;i<table[hash].size(); i++){
-					if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
-						list1.add(table[hash].get(i).getBookNode());
-					}
-					
+	public List<BookNode> getGenre1(String genre){
+		List<BookNode> list1 = new ArrayList<BookNode>();
+		int hash= (getGenreKey0(genre) % TABLE_SIZE);
+		if(table[hash] != null){
+			for(int i=0;i<table[hash].size(); i++){
+				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
+					list1.add(table[hash].get(i).getBookNode());
 				}
+
 			}
-			return list1;
-			
-		} 
-		public List<BookNode> get2(String genre){
-			List<BookNode> list2 = new ArrayList<BookNode>();
-			int hash= (getGenreKey0(genre) % TABLE_SIZE);
-			if(table[hash] != null){
-				for(int i=0;i<table[hash].size(); i++){
-					if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
-						list2.add(table[hash].get(i).getBookNode());
-					}
-					
+		}
+		return list1;
+
+	} 
+	public List<BookNode> get2(String genre){
+		List<BookNode> list2 = new ArrayList<BookNode>();
+		int hash= (getGenreKey0(genre) % TABLE_SIZE);
+		if(table[hash] != null){
+			for(int i=0;i<table[hash].size(); i++){
+				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
+					list2.add(table[hash].get(i).getBookNode());
 				}
+
 			}
-			return list2;
-			
-		} 
-		
+		}
+		return list2;
+
+	} 
+
 	/*public void put(BookNode booknode){
 		HashEntryAuthor temp = new HashEntryAuthor(booknode);
 		int hash = (temp.getKey() % TABLE_SIZE);
 		table[hash].addAll(temp);
-		
+
 	} */
-	
+
+	public void add(BookNode book) {
 		
+	}
 
 }
