@@ -79,11 +79,12 @@ public class HashMapGenre {
 			return list2;
 			
 		} 
+		/*
 	public void put(BookNode booknode){
 		HashEntryAuthor temp = new HashEntryAuthor(booknode);
 		int hash = (temp.getKey() % TABLE_SIZE);
 		table[hash].addAll(temp);
 		
 	} 
-	
+*/	
 }
