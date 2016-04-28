@@ -88,7 +88,7 @@ public class HashMapGenre {
 	} */
 
 	public void add(BookNode book) {
-		
+		System.out.println("Hola");
 	}
 
 }
