@@ -40,10 +40,10 @@ public class HashEntryGenre {
 	}
 	
 	public int createKey2(BookNode bookNode, int index) {
-		return (int) bookNode.getAKeyword(index).charAt(1);
+		return (int) bookNode.getAKeyword(index).charAt(0);
 	}
 	
-	public int getKey0(BookNode bookNode, int index) {
+	public int getKey0(BookNode bookNode) {
 		return this.theKey0;
 	}
 	
@@ -51,7 +51,7 @@ public class HashEntryGenre {
 		return this.theKey1;
 	}
 	
-	public int getKey3(BookNode bookNode) {
+	public int getKey2(BookNode bookNode) {
 		return this.theKey2;
 	}
 	
