@@ -25,7 +25,7 @@ public class MatchGenre{
 		genres.add("Drama");
 		genres.add("Tragedy");
 		
-		if(genres.contains(arrGenres)){
+		/*if(genres.contains(arrGenres)){
 			System.out.println("There are existent books");
 			
 		}else{
@@ -42,7 +42,7 @@ public class MatchGenre{
 	
 	
 
-	
-	}
+	*/
+	} 
 		
 }
