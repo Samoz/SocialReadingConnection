@@ -19,6 +19,7 @@ import graphDatabase.BookEdge;
 import graphDatabase.BookNode;
 import graphDatabase.Graph;
 import search.HashMapAuthor;
+import search.HashMapGenre;
 import search.HashMapTitle;
 
 public class PanelControl extends JPanel implements ActionListener {
@@ -27,6 +28,10 @@ public class PanelControl extends JPanel implements ActionListener {
 	private ArrayList<BookNode> nodeArr;
 	private ArrayList<BookEdge> edgeArr;
 	private List<BookNode> authorList = new ArrayList<BookNode>();
+	private List<BookNode> genreList = new ArrayList<BookNode>();
+	private HashMapAuthor hashAuthor;
+	private HashMapTitle hashTitle;
+	private HashMapGenre hashGenre;
 	
 	private int genreCounter;
 
@@ -56,9 +61,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private JButton btnCancel;
 	private JButton btnAuthor;
 	private JButton btnRelAuthor;
-	
-	private HashMapAuthor hashAuthor;
-	private HashMapTitle hashTitle;
+	private JButton btnSearchGenre;
 	
 	public PanelControl() {
 		this.hashAuthor = new HashMapAuthor();
@@ -87,14 +90,20 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.hashAuthor.put(bookNode);
 	}
 	
-	public String getAuthorByHash(String bookTitle) {
+	public String searchForBook(String bookTitle) {
 		String bookInfo = "";
-		this.authorList = hashTitle.get(bookTitle);
+		this.authorList = this.hashTitle.get(bookTitle);
 		for (BookNode bookNode: this.authorList) {
 			bookInfo = bookNode.toString();
 		}
 		return bookInfo;
-	}	
+	}
+	
+	/*public String searcForBookByGenre(String genre) {
+		String genreStr = "";
+		//this.genreList = this.hashGenre.get2(genreStr);
+		
+	}*/
 	
 	public void showNodes() {
 		this.nodeArr.iterator();
@@ -107,17 +116,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	public String[] getArrGenres() {
 		return this.arrGenres;
 	}
-
-	public void addActionsToButtons() {
-		this.btnAdd.addActionListener(this);
-		this.btnSearch.addActionListener(this);
-		this.btnRelated.addActionListener(this);
-		this.btnGenre.addActionListener(this);
-		this.btnCancel.addActionListener(this);
-		this.btnAuthor.addActionListener(this);
-		this.btnRelAuthor.addActionListener(this);
-	}
-
+	
 	public void addComponentsToPanel() {
 		this.lbBook = new JLabel("Book Name:");
 		this.lbGenre = new JLabel("Genres of the Book:");
@@ -140,6 +139,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnCancel = new JButton("Cancel");
 		this.btnAuthor = new JButton("Set Author");
 		this.btnRelAuthor = new JButton("Show Related Authors");
+		this.btnSearchGenre = new JButton("Search By Genre");
 		this.add(this.lbBook);
 		this.add(this.lbGenre);
 		this.add(this.lbOutput);
@@ -161,6 +161,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.add(this.btnCancel);
 		this.add(this.btnAuthor);
 		this.add(this.btnRelAuthor);
+		this.add(this.btnSearchGenre);
 		this.add(this.taOutput);
 	}
 	
@@ -179,7 +180,8 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.lbGenre.setBounds(this.lbAuthorFN.getX(), this.btnAuthor.getY() + this.btnAuthor.getHeight(), this.lbGenre.getPreferredSize().width, 30);
 		this.tfGenre.setBounds(this.lbGenre.getX() + this.lbGenre.getWidth(), this.lbGenre.getY(), this.getPreferredSize().width - this.lbGenre.getWidth() - 80, 30);
 		this.lbCounter.setBounds(this.tfGenre.getX() + this.tfGenre.getWidth(), this.tfGenre.getY(), this.lbCounter.getPreferredSize().width, 30);
-		this.btnGenre.setBounds(this.getPreferredSize().width / 2 - 50, this.lbGenre.getY() + this.lbGenre.getHeight(), this.btnGenre.getPreferredSize().width, 30);
+		this.btnSearchGenre.setBounds(this.tfGenre.getX() + 70, this.lbGenre.getY() + this.lbGenre.getHeight(), this.btnSearchGenre.getPreferredSize().width, 30);
+		this.btnGenre.setBounds(this.btnSearchGenre.getX() + this.btnSearchGenre.getWidth(), this.lbGenre.getY() + this.lbGenre.getHeight(), this.btnGenre.getPreferredSize().width, 30);
 		this.btnCancel.setBounds(this.lbCounter.getX() - 20, this.btnGenre.getY(), this.btnCancel.getPreferredSize().width, 30);
 		this.lbInfo.setBounds(this.lbGenre.getX(), this.btnGenre.getY() + this.btnGenre.getHeight(), this.lbInfo.getPreferredSize().width, 30);
 		this.taInfo.setBounds(this.lbInfo.getX(), this.lbInfo.getY() + this.lbInfo.getHeight(), this.getPreferredSize().width - 20, 300);
@@ -204,6 +206,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.tfFirstName.setText("");
 		this.tfLastName.setText("");
 		this.tfGenre.setText("");
+		this.taInfo.setText("");
 		this.tfBook.setEditable(true);
 		this.tfFirstName.setEditable(true);
 		this.tfLastName.setEditable(true);
@@ -218,6 +221,17 @@ public class PanelControl extends JPanel implements ActionListener {
 		
 	}
 
+	public void addActionsToButtons() {
+		this.btnAdd.addActionListener(this);
+		this.btnSearch.addActionListener(this);
+		this.btnRelated.addActionListener(this);
+		this.btnGenre.addActionListener(this);
+		this.btnCancel.addActionListener(this);
+		this.btnAuthor.addActionListener(this);
+		this.btnRelAuthor.addActionListener(this);
+		this.btnSearchGenre.addActionListener(this);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(this.btnAdd)) {
@@ -242,7 +256,7 @@ public class PanelControl extends JPanel implements ActionListener {
 				this.taOutput.setText("Please Enter a Valid Book Name");
 			}
 			else {
-				
+				this.taInfo.setText(searchForBook(this.tfBook.getText()));
 			}
 		}
 		else if (e.getSource().equals(this.btnRelated)) {
@@ -274,6 +288,23 @@ public class PanelControl extends JPanel implements ActionListener {
 				
 			}
 		}
+		else if (e.getSource().equals(this.btnSearchGenre)) {
+			this.taInfo.setText("");
+			this.taOutput.setText("");
+			this.tfBook.setText("");
+			this.tfFirstName.setText("");
+			this.tfLastName.setText("");
+			this.tfBook.setEditable(false);
+			this.tfFirstName.setEditable(false);
+			this.tfLastName.setEditable(false);
+			this.btnAdd.setEnabled(false);
+			this.btnAuthor.setEnabled(false);
+			this.btnGenre.setEnabled(false);
+			this.btnRelated.setEnabled(false);
+			this.btnRelAuthor.setEnabled(false);
+			this.btnSearch.setEnabled(false);
+			this.btnCancel.setEnabled(true);
+		}
 		else if (e.getSource().equals(this.btnGenre)) {
 			this.taOutput.setText("");
 			if (this.tfGenre.getText().equals("")) {
@@ -293,12 +324,12 @@ public class PanelControl extends JPanel implements ActionListener {
 						" Genres: " + this.arrGenres[2] + ", " + this.arrGenres[1] + ", " + this.arrGenres[0] +
 						" has been added.");
 				enableComponents();
-				this.taInfo.setText(this.theGraph.displayNodes());
 			}
 		}
 		else if (e.getSource().equals(this.btnCancel)) {
 			enableComponents();
 			this.taOutput.setText("");
+			this.taInfo.setText("");
 			this.arrGenres = null;
 			this.genreCounter = 0;
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import graphDatabase.BookNode;
-import hashTables.HashEntryAuthor;
 import hashTables.HashEntryGenre;
 
 
@@ -19,6 +18,7 @@ import hashTables.HashEntryGenre;
  * using a heap our nodes will be sorted from most favorite to less.
  */
 public class HashMapGenre {
+	
 	private final static int TABLE_SIZE = 300;
 	private List<HashEntryGenre>[] table;
 	public HashMapGenre(){
@@ -27,12 +27,15 @@ public class HashMapGenre {
 			table[i] = new ArrayList<HashEntryGenre>();
 		}
 	}
+	
 	public int getGenreKey0(String genre){
 		return (int)genre.charAt(0);
 	}
+	
 	public int getGenreKey1(String genre){
 		return (int)genre.charAt(0);
 	}
+	
 	public int getGenreKey2(String genre){
 		return (int)genre.charAt(0);
 	}
@@ -45,12 +48,11 @@ public class HashMapGenre {
 				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
 					list0.add(table[hash].get(i).getBookNode());
 				}
-
 			}
 		}
 		return list0;
-
 	} 
+	
 	public List<BookNode> getGenre1(String genre){
 		List<BookNode> list1 = new ArrayList<BookNode>();
 		int hash= (getGenreKey0(genre) % TABLE_SIZE);
@@ -59,12 +61,11 @@ public class HashMapGenre {
 				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
 					list1.add(table[hash].get(i).getBookNode());
 				}
-
 			}
 		}
 		return list1;
-
 	} 
+	
 	public List<BookNode> get2(String genre){
 		List<BookNode> list2 = new ArrayList<BookNode>();
 		int hash= (getGenreKey0(genre) % TABLE_SIZE);
@@ -73,31 +74,26 @@ public class HashMapGenre {
 				if(table[hash].get(i).getBookNode().getAuthor().equals(genre)){
 					list2.add(table[hash].get(i).getBookNode());
 				}
-
 			}
 		}
 		return list2;
-
 	} 
 
 	public void put0(BookNode booknode){
 		HashEntryGenre temp = new HashEntryGenre(booknode,0);
 		int hash = (temp.getKey0(booknode) % TABLE_SIZE);
 		table[hash].add(temp);
-
 	} 
+	
 	public void put1(BookNode booknode){
 		HashEntryGenre temp = new HashEntryGenre(booknode,1);
 		int hash = (temp.getKey1(booknode) % TABLE_SIZE);
 		table[hash].add(temp);
-
 	} 
+	
 	public void put2(BookNode booknode){
 		HashEntryGenre temp = new HashEntryGenre(booknode ,2);
 		int hash = (temp.getKey2(booknode) % TABLE_SIZE);
 		table[hash].add(temp);
-		
 	}
-
-	
 }
