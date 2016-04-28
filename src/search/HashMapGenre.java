@@ -3,6 +3,8 @@ package search;
 import java.util.ArrayList;
 import java.util.List;
 
+import graphDatabase.BookNode;
+import hashTables.HashEntryAuthor;
 import hashTables.HashEntryGenre;
 
 
@@ -25,8 +27,35 @@ public class HashMapGenre {
 			table[i] = new ArrayList<HashEntryGenre>();
 		}
 	}
-	public int getGenreKey(String genre){
+	public int getGenreKey0(String genre){
 		return (int)genre.charAt(0);
-	
 	}
+	public int getGenreKey1(String genre){
+		return (int)genre.charAt(0);
+	}
+	public int getGenreKey2(String genre){
+		return (int)genre.charAt(0);
+	}
+	
+	/*public List<BookNode> get(String author){
+		List<BookNode> list = new ArrayList<BookNode>();
+		int hash= (getAuthorKey(author) % TABLE_SIZE);
+		if(table[hash] != null){
+			for(int i=0;i<table[hash].size(); i++){
+				if(table[hash].get(i).getBookNode().getAuthor().equals(author)){
+					list.add(table[hash].get(i).getBookNode());
+				}
+				
+			}
+		}
+		return list;
+		
+	} 
+	public void put(BookNode booknode){
+		HashEntryAuthor temp = new HashEntryAuthor(booknode);
+		int hash = (temp.getKey() % TABLE_SIZE);
+		table[hash].add(temp);
+		
+	} */
+	
 }
