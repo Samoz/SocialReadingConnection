@@ -28,7 +28,6 @@ public class PanelControl extends JPanel implements ActionListener {
 	private ArrayList<BookNode> nodeArr;
 	private ArrayList<BookEdge> edgeArr;
 	private List<BookNode> authorList = new ArrayList<BookNode>();
-	private List<BookNode> genreList = new ArrayList<BookNode>();
 	private HashMapAuthor hashAuthor;
 	private HashMapTitle hashTitle;
 	private HashMapGenre hashGenre;
@@ -286,6 +285,8 @@ public class PanelControl extends JPanel implements ActionListener {
 			if (this.tfFirstName.getText().equals("") || this.tfLastName.getText().equals("")) {
 				this.taOutput.setText("Please Enter a Valid Author Name");
 				
+			}else{
+				matchBook();
 			}
 		}
 		else if (e.getSource().equals(this.btnSearchGenre)) {
@@ -334,4 +335,19 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.genreCounter = 0;
 		}
 	}	
+	public void matchBook(){
+		 List<String> genres= new ArrayList<String>();
+		 genres.add("Fiction");
+		 genres.add("Horror");
+		 genres.add("Romance");
+		 genres.add("Mystery");
+		 genres.add("Sci-Fi");
+		 genres.add("Fiction");
+		 genres.add("Drama");
+		 if(this.arrGenres.equals("Fiction")){
+			 this.taOutput.setText("Fiction Searched");
+		 }
+		 
+		
+	}
 }
