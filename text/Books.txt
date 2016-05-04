@@ -1,245 +1,287 @@
 Harry Potter: Series
-JK Rowling
+JK 
+Rowling
 Fiction
 Sci-Fi
 Action
 
 The Hunger Games: Series
-Suzanne Collins
+Suzanne 
+Collins
 Fiction
 Sci-Fi
 Action
 
 Twilight
-Stephanie Meyer
+Stephanie 
+Meyer
 Romance
 Young Adult
 Fantasy
 
 Pride and Prejudice
-Jane Austen
+Jane 
+Austen
 Fiction
 Romance
 Historical
 
 To Kill a Mockingbird
-Harper Lee
+Harper 
+Lee
 Fiction
 Young Adult
 Historical
 
 The Hobbit
-JRR Tolkien
+JRR 
+Tolkien
 Fantasy
 Adventure
 Young Adult
 
 The Great Gatsby
-Scott Fitzgerald
+Scott 
+Fitzgerald
 Historical
 Fiction
 Romance
 
 The Diary of a Young Girl
-Anne Frank
+Anne 
+Frank
 Historical
 Biography
 Nonfiction
 
 The Book Thief
-Markus Zusah
+Markus 
+Zusah
 Fiction
 Young Adult
 Historical
 
 The Fault In Our Stars
-John Green
+John 
+Green
 Young Adult
 Drama
 Romance
 
 Divergent
-Veronica Roth
+Veronica 
+Roth
 Sci-Fi
 Fantasy
 Action
 
 The Time Traveler’s Wife
-Audrey Niffenegger
+Audrey 
+Niffenegger
 Romance
 Fiction
 Romance
 Fantasy
 
 Hamlet
-William Shakespeare
+William 
+Shakespeare
 Drama
 Fiction
 Poetry
 
 Romeo and Juliet
-William Shakespeare
+William 
+Shakespeare
 Drama
 Romance
 Poetry
 
 Life of Pi
-Yann Martel
+Yann 
+Martel
 Fiction
 Adventure
 Fantasy
 
 The Notebook
-Nicholas Sparks
+Nicholas 
+Sparks
 Fiction
 Romance
 Drama
 
 The Choice
-Nicholas Sparks
+Nicholas 
+Sparks
 Fiction
 Romance
 Drama
 
 The Rescue
-Nicholas Sparks
+Nicholas 
+Sparks
 Fiction
 Romance
 Drama
 
 A Walk To Remember
-Nicholas Sparks
+Nicholas 
+Sparks
 Fiction
 Romance
 Drama
 
-Tom Sawyer
+Tom 
+Sawyer
 Mark Twain
 Fiction
 Adventure
 Young Adult
 
 The Alchemist
-Paulo Coelho
+Paulo 
+Coelho
 Fiction
 Fantasy
 Philosophy
 
 Water for Elephants
-Sara Gruen
+Sara 
+Gruen
 Romance
 Drama
 Fiction
 
 The Boy in the Striped Pijamas
-John Boyne
+John 
+Boyne
 Drama
 Fiction
 Historical
 
 Consequence: A Memoir
-Eric Fair
+Eric 
+Fair
 Nonfiction
 Drama
 Adventure
 
 My Sunshine Away
-M.O Walsh
+M.O 
+Walsh
 Mystery
 Thriller
 Action
 
 Plague Land
-S.D Sykes
+S.D 
+Sykes
 Mystery
 Thriller
 Action
 
 Too Bad to Die
-Francine Mathews
+Francine 
+Mathews
 Mystery
 Thriller
 Action
 
 What Comes Next
-John Katzenbach
+John 
+Katzenbach
 Mystery
 Thriller
 Action
 
 Can you keep a secret?
-R.L Stine
+R.L 
+Stine
 Horror
 Mystery
 Action
 
 Burning
-Danielle Rollins
+Danielle 
+Rollins
 Horror
 Mystery
 Action
 
 The Demonises
-Thomas Sniegoski
+Thomas 
+Sniegoski
 Horror
 Mystery
 Action
 
 Security
-Gina Wahlsdorf
+Gina 
+Wahlsdorf
 Horror
 Fiction
 Thriller
 
 Desolation
-Derek Landy
+Derek 
+Landy
 Horror
 Fiction
 Fantasy
 
 Thirst
-Benjamin Warser
+Benjamin 
+Warser
 Horror
 Nonfiction
 Thriller
 
 Dead Letters
-Conrad Williams
+Conrad 
+Williams
 Horror
 Thriller
 Action
 
 Lost Among the Living
-Simone James
+Simone 
+James
 Suspense
 Thriller
 Action
 
 The Drowning Girls
+Paula
+Treick
 Suspense
 Thriller
 Horror
 
 Deep Under
-Lisa Jones
+Lisa 
+Jones
 Suspense
 Horror
 Thriller
 
 Murder in Time
-Julie McElwain
+Julie 
+McElwain
 Suspense
 Thriller
 Romance
 
 Dirtiest Secret
-Jennifer Kenner
+Jennifer 
+Kenner
 Suspense
 Romance
 Thriller
 
 Thus Spoke Zarathustra
-Friedrich Nietzsche
+Friedrich 
+Nietzsche
 Philosophy
 Religion
 Poetry
@@ -251,65 +293,68 @@ Politics
 Historical
 
 Siddhartha
-Hermann Hesse
+Hermann 
+Hesse
 Philosophy
 Historical
 Religion
 
 The Prince
-Niccolò Machiavelli
+Niccolò 
+Machiavelli
 Historical
 Philosophy
 Nonfiction
 
 The Stranger
-Albert Camus
+Albert 
+Camus
 Philosophy
 Historical
 Fiction
 
 Sleeping Giants
-Cecelia Ahern
+Cecelia 
+Ahern
 Sci-Fi
 Action
 Adventure
 
 Flawed
-Alivia Anders
+Alivia 
+Anders
 Romance
 Sci-Fi
 Action
 
 A Shard of Ice
-Alivia Anders
+Alivia 
+Anders
 Sci-Fi
 Romance
 Thriller
 
 Let The Wind Rise
-Shannon Messenger
+Shannon 
+Messenger
 Sci-Fi
 Thriller
 Mystery
 Drama
 
 The Epidemic
-Suzanne Young
+Suzanne 
+Young
 Sci-Fi
 Thriller
 Romance
 
 Alight
-Scott Sigler
+Scott 
+Sigler
 Sci-Fi
 Horror
 Thriller
-
-
-
-
-
-
 
 
 

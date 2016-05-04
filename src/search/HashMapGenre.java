@@ -66,7 +66,7 @@ public class HashMapGenre {
 		return list1;
 	} 
 	
-	public List<BookNode> get2(String genre){
+	public List<BookNode> getGenre2(String genre){
 		List<BookNode> list2 = new ArrayList<BookNode>();
 		int hash= (getGenreKey0(genre) % TABLE_SIZE);
 		if(table[hash] != null){

@@ -102,8 +102,7 @@ public class BookNode implements BookNodeInterface {
 	public String toString() {
 		return "Book: " + this.bookTitle + "\n" +
 				" Author: " + this.authorFName + " " + this.authorLName + "\n" +
-				" Genres: " + this.keyWords[0] + ", " + this.keyWords[1] + ", " + this.keyWords[2] + "\n" +
-				" Rating: " + this.rating;
+				" Genres: " + this.keyWords[0] + ", " + this.keyWords[1] + ", " + this.keyWords[2] + "\n";
 	}
 
 	@Override

@@ -4,7 +4,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.google.gson.Gson;
 
 import graphDatabase.BookEdge;
 import graphDatabase.BookNode;
@@ -62,7 +73,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private JButton btnAuthor;
 	private JButton btnRelAuthor;
 	private JButton btnSearchGenre;
-	
+
 	public PanelControl() {
 		this.hashAuthor = new HashMapAuthor();
 		this.hashTitle = new HashMapTitle();
@@ -76,6 +87,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		setBoundsToComponents();
 		setComponentsCharacteristics();
 		addActionsToButtons();
+		loadBooks();
 	}
 
 	public void addNodeToGraph() {
@@ -102,17 +114,15 @@ public class PanelControl extends JPanel implements ActionListener {
 		}
 		return bookInfo;
 	}
-	
+
 	public String searchByGenre(String genre) {
 		String bookInfo = "";
-		this.nodeArr = this.hashTitle.get(genre);
+		this.nodeArr = this.hashGenre.getGenre2(genre);
 		for (BookNode bookNode : this.nodeArr) {
 			bookInfo = bookInfo + bookNode.toString() + "\n";
 		}
 		return bookInfo;
 	}
-	
-
 	
 	public void showNodes() {
 		this.nodeArr.iterator();
@@ -125,6 +135,27 @@ public class PanelControl extends JPanel implements ActionListener {
 	public String[] getArrGenres() {
 		return this.arrGenres;
 	}
+	
+	public void loadBooks() {
+		String jsonText = "";
+		Path file = Paths.get("text/Books.json");
+		
+		try {
+			jsonText = new String(Files.readAllBytes(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			Gson gson = new Gson();
+			List<BookNode> bookList = new ArrayList<BookNode>(Arrays.asList(gson.fromJson(jsonText, BookNode[].class)));
+			for (BookNode bookNode : bookList) {
+				addHashKey(bookNode);
+			}
+			nodeArr = bookList;
+		} catch (Exception e) {
+		}
+	}
+	
 
 	public void addComponentsToPanel() {
 		this.lbBook = new JLabel("Book Name:");
@@ -345,6 +376,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.genreCounter = 0;
 		}
 	}	
+	
 	public void matchBook(String genreToSearch) {
 		List<String> genres= new ArrayList<String>();
 		genres.add("Fiction");
