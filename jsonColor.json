@@ -1,9 +1,9 @@
 {
     "color": [
         {
-       "rojo" : "#FF0000",
-        "verde" : "#00FF00",
-        "azul" : "#0000FF"
+       "color1" : "red",
+        "color2" : "green",
+        "color3" : "blue"
         }
     ]
 }
