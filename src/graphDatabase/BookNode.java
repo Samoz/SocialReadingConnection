@@ -17,15 +17,15 @@ public class BookNode implements BookNodeInterface {
 	
 	private String bookTitle;
 	private String authorFName, authorLName;
-	private String[] keyWords;
 	private List<BookNode> similarBooks;
+	private List<String> keyWords;
 	
 	public BookNode(String bookTitle, String authorFName, String authorLName) {
 		this.similarBooks = new ArrayList<BookNode>();
+		this.keyWords = new ArrayList<String>();
 		this.bookTitle = bookTitle;
 		this.authorFName = authorFName;
 		this.authorLName = authorLName;
-		this.keyWords = new String[3];
 	}
 	
 	@Override
@@ -53,16 +53,16 @@ public class BookNode implements BookNodeInterface {
 		return this.authorLName;
 	}
 	
-	@Override
-	public void addKeywords(String keyWord1, String keyWord2, String keyWord3) {
-		this.keyWords[0] = keyWord1;
-		this.keyWords[1] = keyWord2;
-		this.keyWords[2] = keyWord3;
+	public void addKeyword(String keyWord) {
+		this.keyWords.add(keyWord);
 	}
-
-	@Override
-	public String[] getKeywords() {
+	
+	public List<String> getKeywords() {
 		return this.keyWords;
+	}
+	
+	public void setKeywords(List<String> keyWords) {
+		this.keyWords = keyWords;
 	}
 	
 	public void setSimilarBooks(List<BookNode> similarBooks) {
@@ -73,24 +73,29 @@ public class BookNode implements BookNodeInterface {
 		String s = "";
 		s+= "Book: " + this.bookTitle + "\n" +
 				" Author: " + this.authorFName + " " + this.authorLName + "\n" +
-				" Genres: " + this.keyWords[0] + ", " + this.keyWords[1] + ", " + this.keyWords[2] +
-				"\n";
+				" Genres: \n";
+		for (String keyWord : this.keyWords) {
+			s += " - " + keyWord + "\n";
+		}
 		return s;
-	}
-	
-	public String getAKeyword(int index) {
-		return this.keyWords[index];
 	}
 	
 	public boolean addSimilarNode(BookNode similarNode) {
 		int counterKW = 0;
-		for (int i = 0; i < keyWords.length; i++) {
+		for (String keyWordSimilarNode : similarNode.keyWords) {
+			for (String keyWordThisNode : this.keyWords) {
+				if (keyWordSimilarNode.equals(keyWordThisNode)) {
+					counterKW++;
+				}
+			}
+		}
+		/*for (int i = 0; i < this.keyWords.size(); i++) {
 			for (int j = 0; j < keyWords.length; j++) {
 				if (similarNode.getKeywords()[i].equals(this.getKeywords()[j])) {
 					counterKW++;
 				}
 			}
-		}
+		}*/
 		if (counterKW >= 2) {
 			this.similarBooks.add(similarNode);
 			similarNode.getSimilarBooks().add(this);
@@ -103,7 +108,6 @@ public class BookNode implements BookNodeInterface {
 		return this.similarBooks;
 	}
 
-	@Override
 	public String getAuthor() {
 		return getAuthorFirstName() + " " + getAuthorLastName();
 	}

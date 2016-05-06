@@ -25,12 +25,12 @@ public class HashEntryGenre {
 	
 	public HashEntryGenre(BookNode bookNode, int index){
 		this.bookNode = bookNode;
-		this.theKey0 = createKey0(bookNode, index);
-		this.theKey1 = createKey1(bookNode, index);
-		this.theKey2 = createKey2(bookNode, index);
+		//this.theKey0 = createKey0(bookNode, index);
+		//this.theKey1 = createKey1(bookNode, index);
+		//this.theKey2 = createKey2(bookNode, index);
 	}
 	
-	public int createKey0(BookNode bookNode, int index) {
+	/*public int createKey0(BookNode bookNode, int index) {
 		return (int) bookNode.getAKeyword(index).charAt(0);
 	}
 	
@@ -63,6 +63,6 @@ public class HashEntryGenre {
 		return "hash entry" + "key0" + this.theKey0 + "author" + this.bookNode + 
 				"hash entry" + "key1" + this.theKey0 + "author" + this.bookNode +
 				"hash entry" + "key2" + this.theKey0 + "author" + this.bookNode;
-	}
+	}*/
 
 }

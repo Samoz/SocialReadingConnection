@@ -40,7 +40,7 @@ public class HashMapGenre {
 		return (int)genre.charAt(0);
 	}
 
-	public List<BookNode> getGenre0(String genre){
+	/*public List<BookNode> getGenre0(String genre){
 		List<BookNode> list0 = new ArrayList<BookNode>();
 		int hash= (getGenreKey0(genre) % TABLE_SIZE);
 		if(table[hash] != null){
@@ -95,5 +95,5 @@ public class HashMapGenre {
 		HashEntryGenre temp = new HashEntryGenre(booknode ,2);
 		int hash = (temp.getKey2(booknode) % TABLE_SIZE);
 		table[hash].add(temp);
-	}
+	}*/
 }

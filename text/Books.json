@@ -3,7 +3,7 @@
         "bookTitle": "Harry Potter: Series", 
         "authorFName": "JK",
         "authorLName": "Rowling",
-        "keyWords": ["Fantasy", "Sci-Fi", "Action"]
+        "keyWords": ["Fantasy", "Sci-Fi", "Action", "Magic"]
     },
     {
         "bookTitle": "The Hunger Games: Series", 
@@ -184,12 +184,6 @@
         "authorFName": "Derek",
         "authorLName": "Landy",
         "keyWords": ["Horror", "Fiction", "Fantasy"]
-    },
-    {
-        "bookTitle": "The Demonises", 
-        "authorFName": "Thomas",
-        "authorLName": "Sniegoski",
-        "keyWords": ["Mystery", "Horror", "Action"]
     },
     {
         "bookTitle": "Thirst", 
