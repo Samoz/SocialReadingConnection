@@ -10,75 +10,43 @@
 package graphDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import interfaces.GraphInterface;
 
 public class Graph implements GraphInterface {
 	
-	private ArrayList<BookNode> nodeArr;
-	private ArrayList<BookEdge> edgeArr;
+	private List<BookNode> nodeList;
 	
 	public Graph() {
-		this.nodeArr = new ArrayList<BookNode>();
-		this.edgeArr = new ArrayList<BookEdge>();
+		this.nodeList = new ArrayList<BookNode>();
 	}
 	
 	@Override
 	public void addNode(BookNode node) {
-		if (this.nodeArr.contains(node)) {
+		if (this.nodeList.contains(node)) {
 			System.out.println("The book " + node.getBookTitle() + " is already added.");
 		}
 		else {
-			nodeArr.add(node);
+			for (BookNode bookNode : nodeList) {
+				bookNode.addSimilarNode(node);
+			}
+			nodeList.add(node);
 		}
 	}
-
-	@Override
-	public boolean addEdge(BookNode bookOne, BookNode bookTwo) {
-		if (bookOne.equals(bookTwo)) {
-			System.out.println("Can't relate same book.");
-			return false;
-		}
-		BookEdge tempEdge = new BookEdge(bookOne, bookTwo);
-		if (edgeArr.contains(tempEdge)) {
-			return false;
-		}
-		else if (bookOne.containsConnection(tempEdge) || bookTwo.containsConnection(tempEdge)) {
-			return false;
-		}
-		this.edgeArr.add(tempEdge);
-		bookOne.addConnection(tempEdge);
-		bookTwo.addConnection(tempEdge);
-		return true;
-	}
-
-	@Override
-	public boolean containsEdge(BookEdge edge) {
-		if (edge.getBookOne() == null || edge.getBookTwo() == null) {
-			return false;
-		}
-		return this.edgeArr.contains(edge);
-	}	
 	
-	public ArrayList<BookNode> getNodeArr() {
-		return this.nodeArr;
+	public List<BookNode> getNodeArr() {
+		return this.nodeList;
 	}
 	
 	public void setNodeArr(ArrayList<BookNode> nodeArr) {
-		this.nodeArr = nodeArr;
+		this.nodeList = nodeArr;
 	}
 	
-	public ArrayList<BookEdge> getEdgeArr() {
-		return this.edgeArr;
-	}
-	
-	public void setEdgeArr(ArrayList<BookEdge> edgeArr) {
-		this.edgeArr = edgeArr;
-	}
 	
 	public String displayNodes() {
 		String nodeString = "";
-		for (BookNode node: nodeArr) {
+		for (BookNode node: nodeList) {
 			nodeString = nodeString + node + "\n";
 		}
 		return nodeString;

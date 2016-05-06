@@ -9,34 +9,25 @@
 package graphDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import interfaces.BookNodeInterface;
 
 public class BookNode implements BookNodeInterface {
-
+	
 	private String bookTitle;
 	private String authorFName, authorLName;
 	private String[] keyWords;
-	private int rating;
-	private ArrayList<BookEdge> theConnection;
+	private List<BookNode> similarBooks;
 	
 	public BookNode(String bookTitle, String authorFName, String authorLName) {
-		this.theConnection = new ArrayList<BookEdge>();
+		this.similarBooks = new ArrayList<BookNode>();
 		this.bookTitle = bookTitle;
 		this.authorFName = authorFName;
 		this.authorLName = authorLName;
 		this.keyWords = new String[3];
 	}
 	
-	@Override
-	public void addConnection(BookEdge edge) {
-		if (this.theConnection.contains(edge)) {
-			return;
-		}
-		else {
-			this.theConnection.add(edge);
-		}
-	}
-
 	@Override
 	public void setBookTitle(String title) {
 		this.bookTitle = title;
@@ -62,56 +53,58 @@ public class BookNode implements BookNodeInterface {
 		return this.authorLName;
 	}
 	
-	public String getAuthor() {
-		return this.authorFName + " " + this.authorLName;
-	}
-
-	@Override
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-
-	@Override
-	public int getRating() {
-		return this.rating;
-	}
-	
 	@Override
 	public void addKeywords(String keyWord1, String keyWord2, String keyWord3) {
 		this.keyWords[0] = keyWord1;
 		this.keyWords[1] = keyWord2;
 		this.keyWords[2] = keyWord3;
 	}
-	
-	public String getAKeyword(int index) {
-		String[] tempArr = new String[3];
-		if (index < 0 || index > 2) {
-			System.out.println("Array out of bounds");
-		}
-		else {
-			tempArr[index] = this.keyWords[index];
-		}
-		return tempArr[index];
-	}
-	
+
 	@Override
 	public String[] getKeywords() {
 		return this.keyWords;
 	}
 	
+	public void setSimilarBooks(List<BookNode> similarBooks) {
+		this.similarBooks = similarBooks;
+	}
+
 	public String toString() {
-		return "Book: " + this.bookTitle + "\n" +
+		String s = "";
+		s+= "Book: " + this.bookTitle + "\n" +
 				" Author: " + this.authorFName + " " + this.authorLName + "\n" +
-				" Genres: " + this.keyWords[0] + ", " + this.keyWords[1] + ", " + this.keyWords[2] + "\n";
+				" Genres: " + this.keyWords[0] + ", " + this.keyWords[1] + ", " + this.keyWords[2] +
+				"\n";
+		return s;
+	}
+	
+	public String getAKeyword(int index) {
+		return this.keyWords[index];
+	}
+	
+	public boolean addSimilarNode(BookNode similarNode) {
+		int counterKW = 0;
+		for (int i = 0; i < keyWords.length; i++) {
+			for (int j = 0; j < keyWords.length; j++) {
+				if (similarNode.getKeywords()[i].equals(this.getKeywords()[j])) {
+					counterKW++;
+				}
+			}
+		}
+		if (counterKW >= 2) {
+			this.similarBooks.add(similarNode);
+			similarNode.getSimilarBooks().add(this);
+			return true;
+		}
+		return false;
+	}
+	
+	public List<BookNode> getSimilarBooks() {
+		return this.similarBooks;
 	}
 
 	@Override
-	public int getConnectionCount() {
-		return this.theConnection.size();
-	}
-
-	@Override
-	public boolean containsConnection(BookEdge edge) {
-		return this.theConnection.contains(edge);
+	public String getAuthor() {
+		return getAuthorFirstName() + " " + getAuthorLastName();
 	}
 }

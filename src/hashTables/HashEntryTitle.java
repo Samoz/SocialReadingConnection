@@ -32,7 +32,7 @@ public class HashEntryTitle {
 		 * 
 		 * @return the node that has the information stored about the book
 		 */
-		public BookNode getBookNodeT(){
+		public BookNode getBookNode(){
 			return booknode;	
 		}
 		/**

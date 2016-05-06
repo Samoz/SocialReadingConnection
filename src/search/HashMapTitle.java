@@ -41,17 +41,19 @@ public class HashMapTitle {
 	 * corresponding code, once it matches we stored it in our hash table and add it to our book list
 	 * @return a list that has the matching strings, giving all the books the user was/is searching 
 	 */
-	public List<BookNode>get(String title){
-		List<BookNode> list = new ArrayList<BookNode>();
+	public BookNode get(String title){
+		BookNode bookNode = null;
 		int hash = (getTitleKey(title) % TABLE_SIZE);
 		if(table[hash] != null){
 			for(int i=0;i<table[hash].size(); i++){
-				if(table[hash].get(i).getBookNodeT().getBookTitle().equals(title)){
-					list.add(table[hash].get(i).getBookNodeT());
+				if(table[hash].get(i).getBookNode().getBookTitle().equals(title)){
+					bookNode = table[hash].get(i).getBookNode();
+					break;
+					//list.add(table[hash].get(i).getBookNode());
 				}
 			}
 		}
-		return list;
+		return bookNode;
 		
 	}
 	/**

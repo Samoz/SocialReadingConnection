@@ -25,7 +25,6 @@ public class MainGDB {
 		
 		TheFrame theFrame = new TheFrame();
 		
-		
 		/*HashMapTitle hashTitle = new HashMapTitle();
 		HashMapAuthor hashAuthor = new HashMapAuthor();
 		List<BookNodeT> bookAuthorlist = new ArrayList<BookNodeT>();

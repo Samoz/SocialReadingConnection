@@ -12,11 +12,6 @@ import graphDatabase.BookEdge;
 
 public interface BookNodeInterface {
 	
-	/**
-	 * Add an edge to the node
-	 * @param edge the edge to add
-	 */
-	void addConnection(BookEdge edge);
 	
 	/**
 	 * Sets the name of the book
@@ -49,17 +44,7 @@ public interface BookNodeInterface {
 	 */
 	String getAuthorLastName();
 	
-	/**
-	 * Sets the rating of the book
-	 * @param rating the rating of the book
-	 */
-	void setRating(int rating);
-	
-	/**
-	 * 
-	 * @return the rating of the book
-	 */
-	int getRating();
+	String getAuthor();
 	
 	/**
 	 * Sets keywords as a genres for the book
@@ -79,20 +64,7 @@ public interface BookNodeInterface {
 	
 	/**
 	 * 
-	 * @return the number of edges that the node has
-	 */
-	int getConnectionCount();
-	
-	/**
-	 * 
 	 * @return a well formated-string of the info of the node
 	 */
 	String toString();
-	
-	/**
-	 * Check if exist an edge that connects the current node to another node
-	 * @param edge the edge to check
-	 * @return true if there's a connection
-	 */
-	boolean containsConnection(BookEdge edge); 
 }

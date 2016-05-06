@@ -20,10 +20,10 @@ import graphDatabase.BookNode;
 
 public class HashEntryAuthor {
 	private int key;
-	private BookNode booknode;
-	public HashEntryAuthor(BookNode booknode){
-		this.key = createKey(booknode);
-		this.booknode = booknode;	
+	private BookNode bookNode;
+	public HashEntryAuthor(BookNode bookNode){
+		this.key = createKey(bookNode);
+		this.bookNode = bookNode;	
 	}
 	
 	/**
@@ -37,23 +37,23 @@ public class HashEntryAuthor {
 	/**
 	 * 
 	 * Getter for the BookNode, in which we get the information that is stored in it
-	 * @return the booknode
+	 * @return the bookNode
 	 */
 	public BookNode getBookNode(){
-		return booknode;
+		return bookNode;
 	}
 	/**
 	 * 
 	 * @param booknode, made by the string the user writes as Title or Author
 	 * @return it takes the first letter of the string and returns its integer
 	 */
-	private int createKey(BookNode booknode){
-		return (int)booknode.getAuthor().charAt(0);
+	private int createKey(BookNode bookNode){
+		return (int) bookNode.getAuthor().charAt(0);
 	}
 	/**
 	 * Simply gives us the key and the author, this is used mainly for testing purposes
 	 */
 	public String toString(){
-		return "hash entry" + "key" + this.key + "author" + this.booknode;
+		return "hash entry" + "key" + this.key + "author" + this.bookNode;
 	}
 }
