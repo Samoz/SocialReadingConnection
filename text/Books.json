@@ -3,103 +3,103 @@
         "bookTitle": "Harry Potter: Series", 
         "authorFName": "JK",
         "authorLName": "Rowling",
-        "keyWords": ["Fantasy", "Sci-Fi", "Action", "Magic"]
+        "keyWords": ["Fantasy", "Sci-Fi", "Action", "Magic","Mythology"]
     },
     {
         "bookTitle": "The Hunger Games: Series", 
         "authorFName": "Suzanne",
         "authorLName": "Collins",
-        "keyWords": ["Fantasy", "Sci-Fi", "Action"]
+        "keyWords": ["Fantasy", "Sci-Fi", "Action","Drama","Metafiction"]
     },
     {
         "bookTitle": "Twilight", 
         "authorFName": "Stephanie",
         "authorLName": "Meyer",
-        "keyWords": ["Fantasy", "Romance", "Teen"]
+        "keyWords": ["Fantasy", "Romance", "Teen","Fiction","Thriller"]
     },
     {
         "bookTitle": "Pride and Prejudice", 
         "authorFName": "Jane",
         "authorLName": "Austen",
-        "keyWords": ["Fiction", "Romance", "Historical"]
+        "keyWords": ["Fiction", "Romance", "Historical","Romance","Classic"]
     },
     {
         "bookTitle": "The Hobbit", 
         "authorFName": "JRR",
         "authorLName": "Tolkien",
-        "keyWords": ["Fantasy", "Adventure", "Teen"]
+        "keyWords": ["Fantasy", "Adventure", "Teen","Fiction","Sci-Fi"]
     },
     {
         "bookTitle": "The Great Gatsby", 
         "authorFName": "Scott",
         "authorLName": "Fitzgerald",
-        "keyWords": ["Fiction", "Romance", "Historical"]
+        "keyWords": ["Fiction", "Romance", "Historical","Classic","Drama"]
     },
     {
         "bookTitle": "The Diary of a Young Girl", 
         "authorFName": "Anne",
         "authorLName": "Frank",
-        "keyWords": ["Biography", "Nonfiction", "Historical"]
+        "keyWords": ["Biography", "Nonfiction", "Historical","Classic","Drama"]
     },
     {
         "bookTitle": "The Book Thief", 
         "authorFName": "Markus",
-        "authorLName": "Zusah",
-        "keyWords": ["Fiction", "Teen", "Historical"]
+        "authorLName": "Zusak",
+        "keyWords": ["Fiction", "Teen", "Historical","Drama","Thriller"]
     },
     {
         "bookTitle": "The Fault In Our Stars", 
         "authorFName": "John",
         "authorLName": "Green",
-        "keyWords": ["Drama", "Teen", "Romance"]
+        "keyWords": ["Drama", "Teen", "Romance","Fiction"]
     },
     {
         "bookTitle": "Divergent", 
         "authorFName": "Veronica",
         "authorLName": "Roth",
-        "keyWords": ["Sci-Fi", "Fantasy", "Action"]
+        "keyWords": ["Sci-Fi", "Fantasy", "Action","Thriller","Drama","Adventure"]
     },
     {
         "bookTitle": "The Time Traveler’s Wife", 
         "authorFName": "Audrey",
         "authorLName": "Niffenegger",
-        "keyWords": ["Romance", "Fantasy", "Fiction"]
+        "keyWords": ["Romance", "Fantasy", "Fiction","Classic","Historical"]
     },
     {
         "bookTitle": "Hamlet", 
         "authorFName": "William",
         "authorLName": "Shakespeare",
-        "keyWords": ["Drama", "Poetry", "Action"]      
+        "keyWords": ["Drama", "Poetry", "Action","Classic","Romance"]      
     },
     {
         "bookTitle": "Romeo and Juliet", 
         "authorFName": "William",
         "authorLName": "Shakespeare",
-        "keyWords": ["Drama", "Romance", "Poetry"]
+        "keyWords": ["Drama", "Romance", "Poetry","Classic"]
     },
     {
         "bookTitle": "Life of Pi", 
         "authorFName": "Yann",
         "authorLName": "Martel",
-        "keyWords": ["Fiction", "Adventure", "Fantasy"]
+        "keyWords": ["Fiction", "Adventure", "Fantasy","Philosophy","Religion"]
     },
     {
         "bookTitle": "The Notebook", 
         "authorFName": "Nicholas",
         "authorLName": "Sparks",
-        "keyWords": ["Fiction", "Romance", "Drama"]
+        "keyWords": ["Fiction", "Romance", "Drama","Teen"]
     },
     {
         "bookTitle": "The Choice", 
         "authorFName": "Nicholas",
         "authorLName": "Sparks",
-        "keyWords": ["Fiction", "Romance", "Drama"]
+        "keyWords": ["Fiction", "Romance", "Drama","Teen"]
     },
     {
         "bookTitle": "The Rescue", 
         "authorFName": "Nicholas",
         "authorLName": "Sparks",
-        "keyWords": ["Fiction", "Romance", "Drama"]
+        "keyWords": ["Fiction", "Romance", "Drama","Teen"]
     },
     {
         "bookTitle": "A Walk To Remember", 
@@ -117,13 +117,13 @@
         "bookTitle": "The Alchemist", 
         "authorFName": "Paulo",
         "authorLName": "Coelho",
-        "keyWords": ["Fiction", "Fantasy", "Philosophy"]
+        "keyWords": ["Fiction", "Fantasy", "Philosophy","Religion"]
     },
     {
         "bookTitle": "Consequence: A Memoir", 
         "authorFName": "Eric",
         "authorLName": "Fair",
-        "keyWords": ["Nonfiction", "Adventure", "Drama"]
+        "keyWords": ["Nonfiction", "Adventure", "Drama","Thriller"]
     },
     {
         "bookTitle": "The Boy in the Striped Pijamas", 
@@ -141,7 +141,7 @@
         "bookTitle": "Plague Land", 
         "authorFName": "SD",
         "authorLName": "Sykes",
-        "keyWords": ["Mystery", "Thriller", "Action"]
+        "keyWords": ["Mystery", "Thriller", "Action","Dystopian"]
     },
     {
         "bookTitle": "Too Bad to Die", 
@@ -153,37 +153,37 @@
         "bookTitle": "What Comes Next", 
         "authorFName": "John",
         "authorLName": "Katzenbach",
-        "keyWords": ["Mystery", "Thriller", "Action"]
+        "keyWords": ["Mystery", "Thriller", "Action","Psychological"]
     },
     {
         "bookTitle": "Can you keep a secret?", 
         "authorFName": "RL",
         "authorLName": "Stine",
-        "keyWords": ["Mystery", "Horror", "Action"]
+        "keyWords": ["Mystery", "Horror", "Action","Psychological"]
     },
     {
         "bookTitle": "Burning", 
         "authorFName": "Danielle",
         "authorLName": "Rollins",
-        "keyWords": ["Mystery", "Horror", "Action"]
+        "keyWords": ["Mystery", "Horror", "Action","Thriller","Psychological"]
     },
     {
         "bookTitle": "The Demonises", 
         "authorFName": "Thomas",
         "authorLName": "Sniegoski",
-        "keyWords": ["Mystery", "Horror", "Action"]
+        "keyWords": ["Mystery", "Horror", "Action","Thriller"]
     },
     {
         "bookTitle": "Security", 
         "authorFName": "Gina",
         "authorLName": "Wahlsdorf",
-        "keyWords": ["Horror", "Thriller", "Fiction"]
+        "keyWords": ["Horror", "Thriller", "Fiction","Drama"]
     },
     {
         "bookTitle": "Desolation", 
         "authorFName": "Derek",
         "authorLName": "Landy",
-        "keyWords": ["Horror", "Fiction", "Fantasy"]
+        "keyWords": ["Horror", "Fiction", "Fantasy","Dystopian","Thriller"]
     },
     {
         "bookTitle": "Thirst", 
@@ -262,19 +262,19 @@
         "bookTitle": "Sleeping Giants", 
         "authorFName": "Cecelia",
         "authorLName": "Ahern",
-        "keyWords": ["Sci-Fi", "Action", "Adventure"]
+        "keyWords": ["Sci-Fi", "Action", "Adventure","Dystopian"]
     },
     {
         "bookTitle": "Flawed", 
         "authorFName": "Alivia",
         "authorLName": "Anders",
-        "keyWords": ["Sci-Fi", "Action", "Romance"]
+        "keyWords": ["Sci-Fi", "Action", "Romance","Dystopian"]
     },
     {
         "bookTitle": "A Shard of Ice", 
         "authorFName": "Alivia",
         "authorLName": "Anders",
-        "keyWords": ["Sci-Fi", "Thriller", "Romance"]
+        "keyWords": ["Sci-Fi", "Thriller", "Mystery","Horror"]
     },
     {
         "bookTitle": "Let The Wind Rise", 
@@ -287,13 +287,13 @@
         "bookTitle": "The Epidemic", 
         "authorFName": "Suzanne",
         "authorLName": "Young",
-        "keyWords": ["Sci-Fi", "Thriller", "Romance"]
+        "keyWords": ["Sci-Fi", "Thriller", "Romance","Dystopian"]
     },
     {
         "bookTitle": "Alight", 
         "authorFName": "Scott",
         "authorLName": "Sigler",
-        "keyWords": ["Sci-Fi", "Thriller", "Horror"]
+        "keyWords": ["Sci-Fi", "Thriller", "Horror","Historical","Drama"]
     }
 ]
 
