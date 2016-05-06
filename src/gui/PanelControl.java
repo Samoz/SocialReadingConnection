@@ -4,19 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.Book;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -54,10 +51,6 @@ public class PanelControl extends JPanel implements ActionListener {
 	private boolean addAuthorFunction;
 	private boolean searchForGenreFunction;
 
-	private int genreCounter;
-
-	private String[] arrGenres;
-
 	private JLabel lbBook;
 	private JLabel lbGenre;
 	private JLabel lbOutput;
@@ -78,7 +71,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private JButton btnGenre;
 	private JButton btnAdd;
 	private JButton btnSearch;
-	private JButton btnCancel;
+	private JButton btnClear;
 	private JButton btnAuthor;
 	private JButton btnAllAuthors;
 	private JButton btnSearchGenre;
@@ -99,8 +92,6 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.hashTitle = new HashMapTitle();
 		this.hashGenre = new HashMapGenre();
 		this.theGraph = new Graph();
-		this.genreCounter = 0;
-		this.arrGenres = new String[3];
 		this.setPreferredSize(new Dimension(800, 600));
 		this.setLayout(null);
 		addComponentsToPanel();
@@ -233,7 +224,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnGenre = new JButton("Add Genre");
 		this.btnAdd = new JButton("Add Book");
 		this.btnSearch = new JButton("Search for Book");
-		this.btnCancel = new JButton("Cancel");
+		this.btnClear = new JButton("Clear");
 		this.btnAuthor = new JButton("Set Author");
 		this.btnAllAuthors = new JButton("Show Authors");
 		this.btnSearchGenre = new JButton("Search By Genre");
@@ -256,7 +247,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.add(this.btnGenre);
 		this.add(this.btnAdd);
 		this.add(this.btnSearch);
-		this.add(this.btnCancel);
+		this.add(this.btnClear);
 		this.add(this.btnAuthor);
 		this.add(this.btnAllAuthors);
 		this.add(this.btnSearchGenre);
@@ -292,7 +283,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.tfGenre.setBounds(this.lbGenre.getX() + this.lbGenre.getWidth(), this.lbGenre.getY(), this.getPreferredSize().width - this.lbGenre.getWidth() - 220, 30);
 		this.btnSearchGenre.setBounds(this.tfGenre.getX() + 70, this.lbGenre.getY() + this.lbGenre.getHeight(), this.btnSearchGenre.getPreferredSize().width, 30);
 		this.btnGenre.setBounds(this.btnSearchGenre.getX() + this.btnSearchGenre.getWidth(), this.lbGenre.getY() + this.lbGenre.getHeight(), this.btnGenre.getPreferredSize().width, 30);
-		this.btnCancel.setBounds(this.tfLastName.getX() + 80, this.btnGenre.getY(), this.btnCancel.getPreferredSize().width, 30);
+		this.btnClear.setBounds(this.tfLastName.getX() + 80, this.btnGenre.getY(), this.btnClear.getPreferredSize().width, 30);
 		this.lbInfo.setBounds(this.lbGenre.getX(), this.btnGenre.getY() + this.btnGenre.getHeight(), this.lbInfo.getPreferredSize().width, 30);
 		this.spInfo.setBounds(this.lbInfo.getX(), this.lbInfo.getY() + this.lbInfo.getHeight(), this.getPreferredSize().width - 220, 300);
 		this.spOutput.setBounds(10, this.getPreferredSize().height - 50, this.getPreferredSize().width - 220, 40);
@@ -306,7 +297,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.taOutput.setEditable(false);
 		this.btnAuthor.setEnabled(false);
 		this.btnGenre.setEnabled(false);
-		this.btnCancel.setEnabled(false);
+		this.btnClear.setEnabled(false);
 		this.taInfo.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		this.taOutput.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		this.jListRelatedBooks.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -326,7 +317,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnAuthor.setEnabled(false);
 		this.btnAllAuthors.setEnabled(true);
 		this.btnGenre.setEnabled(false);
-		this.btnCancel.setEnabled(false);
+		this.btnClear.setEnabled(false);
 		this.btnSearchGenre.setEnabled(true);
 		this.btnShowBookList.setEnabled(true);
 		this.lbRelatedBooks.setText("");
@@ -344,7 +335,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnAdd.addActionListener(this);
 		this.btnSearch.addActionListener(this);
 		this.btnGenre.addActionListener(this);
-		this.btnCancel.addActionListener(this);
+		this.btnClear.addActionListener(this);
 		this.btnAuthor.addActionListener(this);
 		this.btnAllAuthors.addActionListener(this);
 		this.btnSearchGenre.addActionListener(this);
@@ -433,7 +424,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			else {
 				this.tfBook.setEditable(false);
 				this.btnAuthor.setEnabled(true);
-				this.btnCancel.setEnabled(true);
+				this.btnClear.setEnabled(true);
 				this.btnAdd.setEnabled(false);
 				this.btnSearch.setEnabled(false);
 				this.btnAllAuthors.setEnabled(false);
@@ -451,7 +442,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.spRelatedBooks.repaint();
 			this.taInfo.setText("");
 			this.taOutput.setText("");
-			this.btnCancel.setEnabled(true);
+			this.btnClear.setEnabled(true);
 			if (this.tfBook.getText().equals("")) {
 				this.taOutput.setText("Please Enter a Valid Book Name");
 			}
@@ -475,7 +466,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.lbRelatedBooks.setText("");
 			this.taOutput.setText("");
 			this.taInfo.setText("");
-			this.btnCancel.setEnabled(true);
+			this.btnClear.setEnabled(true);
 			this.lbRelatedBooks.setText("Books Stored:");
 			this.jListRelatedBooks.setModel(bookNodeModel);
 			Collections.sort(this.theGraph.getNodeArr(), new BookNodeComparator());
@@ -509,12 +500,13 @@ public class PanelControl extends JPanel implements ActionListener {
 				this.btnAuthor.setEnabled(false);
 			}
 		}
-
 		else if (e.getSource().equals(this.btnAllAuthors)) {
 			this.taInfo.setText("");
 			this.taOutput.setText("");
 			this.bookNodeModel.clear();
 			this.bookNodeModelGenre.clear();
+			this.btnAdd.setEnabled(false);
+			this.btnClear.setEnabled(true);
 			this.addAuthorFunction = true;
 			this.addGenreFunction = false;
 			this.allBooksFunction = false;
@@ -525,7 +517,6 @@ public class PanelControl extends JPanel implements ActionListener {
 			for (String string : this.showAllAuthors()) {
 				this.authorModel.addElement(string);
 			}
-
 		}
 		else if (e.getSource().equals(this.btnSearchGenre)) {
 			this.lbRelatedBooks.setText("Available Genres");
@@ -544,7 +535,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.btnGenre.setEnabled(false);
 			this.btnAllAuthors.setEnabled(false);
 			this.btnSearch.setEnabled(false);
-			this.btnCancel.setEnabled(true);
+			this.btnClear.setEnabled(true);
 			if (this.tfGenre.equals("")) {
 				this.taOutput.setText("Please enter a valid genre");
 			}
@@ -591,12 +582,10 @@ public class PanelControl extends JPanel implements ActionListener {
 						" Genres: " + bookToAdd.getKeywords() + " has been added.");
 			}
 		}
-		else if (e.getSource().equals(this.btnCancel)) {
+		else if (e.getSource().equals(this.btnClear)) {
 			enableComponents();
 			this.taOutput.setText("");
 			this.taInfo.setText("");
-			this.arrGenres = null;
-			this.genreCounter = 0;
 		}
 	}	
 
