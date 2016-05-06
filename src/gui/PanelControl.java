@@ -118,9 +118,6 @@ public class PanelControl extends JPanel implements ActionListener {
 	public void addHashKey(BookNode bookNode) {
 		this.hashTitle.put(bookNode);
 		this.hashAuthor.put(bookNode);
-		/*this.hashGenre.put0(bookNode);
-		this.hashGenre.put1(bookNode);
-		this.hashGenre.put2(bookNode);*/
 	}
 
 	public BookNode searchForBook(String bookTitle) {
@@ -238,7 +235,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.btnSearch = new JButton("Search for Book");
 		this.btnCancel = new JButton("Cancel");
 		this.btnAuthor = new JButton("Set Author");
-		this.btnAllAuthors = new JButton("Show Related Authors");
+		this.btnAllAuthors = new JButton("Show Authors");
 		this.btnSearchGenre = new JButton("Search By Genre");
 		this.btnShowBookList = new JButton("Show Books");
 		this.jListRelatedBooks = new JList<String>();
@@ -395,9 +392,11 @@ public class PanelControl extends JPanel implements ActionListener {
 					Object selectedValue = jListRelatedBooks.getSelectedValue();
 					if (!e.getValueIsAdjusting()) {
 						if (selectedValue != null) {
-							String[] author = selectedValue.toString().split(" ");
-							tfFirstName.setText(author[0]);
-							tfLastName.setText(author[1]);
+							if (btnAuthor.isEnabled()) {
+								String[] author = selectedValue.toString().split(" ");
+								tfFirstName.setText(author[0]);
+								tfLastName.setText(author[1]);
+							}
 						}
 					}
 				}
@@ -429,15 +428,9 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.relatedFunction = false;
 			this.taInfo.setText("");
 			if (this.tfBook.getText().equals("")) {
-				this.taOutput.setText("Please Enter a Valid Book Name");
+				this.lbOutput.setText("Please Enter a Valid Book Name");
 			}
 			else {
-				this.addAuthorFunction = true;
-				this.lbRelatedBooks.setText("Authors");
-				this.jListRelatedBooks.setModel(this.authorModel);
-				for (String string : this.showAllAuthors()) {
-					this.authorModel.addElement(string);
-				}
 				this.tfBook.setEditable(false);
 				this.btnAuthor.setEnabled(true);
 				this.btnCancel.setEnabled(true);
@@ -449,6 +442,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			}
 		}
 		else if (e.getSource().equals(this.btnSearch)) {
+			this.btnAdd.setEnabled(false);
 			this.relatedFunction = true;
 			this.allBooksFunction = false;
 			this.addGenreFunction = false;
@@ -457,6 +451,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.spRelatedBooks.repaint();
 			this.taInfo.setText("");
 			this.taOutput.setText("");
+			this.btnCancel.setEnabled(true);
 			if (this.tfBook.getText().equals("")) {
 				this.taOutput.setText("Please Enter a Valid Book Name");
 			}
@@ -468,6 +463,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			}
 		}	
 		else if (e.getSource().equals(this.btnShowBookList)) {
+			this.btnAdd.setEnabled(false);
 			this.relatedFunction = false;
 			this.allBooksFunction = true;
 			this.addGenreFunction = false;
@@ -479,6 +475,7 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.lbRelatedBooks.setText("");
 			this.taOutput.setText("");
 			this.taInfo.setText("");
+			this.btnCancel.setEnabled(true);
 			this.lbRelatedBooks.setText("Books Stored:");
 			this.jListRelatedBooks.setModel(bookNodeModel);
 			Collections.sort(this.theGraph.getNodeArr(), new BookNodeComparator());
@@ -516,12 +513,19 @@ public class PanelControl extends JPanel implements ActionListener {
 		else if (e.getSource().equals(this.btnAllAuthors)) {
 			this.taInfo.setText("");
 			this.taOutput.setText("");
-			if (this.tfFirstName.getText().equals("") || this.tfLastName.getText().equals("")) {
-				this.taOutput.setText("Please Enter a Valid Author Name");
-			} 
-			else {
-				this.taInfo.append(showAllAuthors().toString());
+			this.bookNodeModel.clear();
+			this.bookNodeModelGenre.clear();
+			this.addAuthorFunction = true;
+			this.addGenreFunction = false;
+			this.allBooksFunction = false;
+			this.relatedFunction = false;
+			this.searchForGenreFunction = false;
+			this.lbRelatedBooks.setText("Authors");
+			this.jListRelatedBooks.setModel(this.authorModel);
+			for (String string : this.showAllAuthors()) {
+				this.authorModel.addElement(string);
 			}
+
 		}
 		else if (e.getSource().equals(this.btnSearchGenre)) {
 			this.lbRelatedBooks.setText("Available Genres");
