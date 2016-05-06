@@ -6,8 +6,8 @@ public class BookNodeComparator implements Comparator<BookNode>{
 
 	@Override
 	public int compare(BookNode o1, BookNode o2) {
-		String titleO1;
-		String titleO2;
+		String titleO1 = "";
+		String titleO2 = "";
 		if (o1.getBookTitle().substring(0, 4).equals("The ")) {
 			titleO1 = o1.getBookTitle().substring(4, o1.getBookTitle().length());
 		} 
