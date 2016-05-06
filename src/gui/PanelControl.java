@@ -52,6 +52,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private boolean allBooksFunction;
 	private boolean addGenreFunction;
 	private boolean addAuthorFunction;
+	private boolean searchForGenreFunction;
 
 	private int genreCounter;
 
@@ -123,7 +124,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	}
 
 	public BookNode searchForBook(String bookTitle) {
-		return (BookNode) hashTitle.get(bookTitle);
+		return hashTitle.get(bookTitle);
 	}
 
 	public void showRelatedBooks(BookNode bookNode) {
@@ -158,7 +159,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		Collections.sort(tempList);
 		return tempList;
 	}
-	
+
 	public List<String> removeDuplicateGenresInList() {
 		List<String> tempList = new ArrayList<String>(new LinkedHashSet<String>());
 		List<BookNode> tempBookNodeList = this.theGraph.getNodeArr();
@@ -171,7 +172,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		Collections.sort(tempList);
 		return tempList;
 	}
-	
+
 	public List<String> addGenresToBook(List<String> genreList) {
 		List<String> tempList = new ArrayList<String>(new LinkedHashSet<String>());
 		tempList.addAll(genreList);
@@ -181,7 +182,18 @@ public class PanelControl extends JPanel implements ActionListener {
 		Collections.sort(tempList);
 		return tempList;
 	}
-	
+
+	public List<BookNode> searchByGenre(String genre) {
+		List<BookNode> tempList = new ArrayList<BookNode>();
+		List<BookNode> tempBookList = theGraph.getNodeArr();
+		for (BookNode bookNode : tempBookList) {
+			if (bookNode.getKeywords().contains(genre)) {
+				tempList.add(bookNode);
+			}
+		}
+		return tempList;
+	}
+
 	public String getBookName() {
 		return this.tfBook.getText();
 	}
@@ -325,6 +337,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		this.allBooksFunction = false;
 		this.relatedFunction = false;
 		this.addAuthorFunction = false;
+		this.searchForGenreFunction = false;
 		this.bookNodeModel.clear();
 		this.bookNodeModelGenre.clear();
 		this.authorModel.clear();
@@ -388,6 +401,16 @@ public class PanelControl extends JPanel implements ActionListener {
 						}
 					}
 				}
+				else if (searchForGenreFunction) {
+					Object selectionValue = jListRelatedBooks.getSelectedValue();
+					if (!e.getValueIsAdjusting()) {
+						if (selectionValue != null) {
+							for (BookNode bookNode : searchByGenre(selectionValue.toString())) {
+								taInfo.append(bookNode.toString() + "\n");
+							}
+						}
+					}
+				}
 			}
 		});
 	}
@@ -448,7 +471,11 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.relatedFunction = false;
 			this.allBooksFunction = true;
 			this.addGenreFunction = false;
+			this.searchForGenreFunction = false;
+			this.addAuthorFunction = false;
 			this.bookNodeModel.clear();
+			this.bookNodeModelGenre.clear();
+			this.authorModel.clear();
 			this.lbRelatedBooks.setText("");
 			this.taOutput.setText("");
 			this.taInfo.setText("");
@@ -466,10 +493,14 @@ public class PanelControl extends JPanel implements ActionListener {
 			}
 			else {
 				this.authorModel.clear();
+				this.bookNodeModel.clear();
 				this.tfGenre.setEditable(true);
 				this.tfGenre.setText("");
 				this.addAuthorFunction = false;
 				this.addGenreFunction = true;
+				this.searchForGenreFunction = false;
+				this.allBooksFunction = false;
+				this.searchForGenreFunction = false;
 				this.lbRelatedBooks.setText("Genres:");
 				this.jListRelatedBooks.setModel(this.bookNodeModelGenre);
 				for (String string : removeDuplicateGenresInList()) {
@@ -494,6 +525,8 @@ public class PanelControl extends JPanel implements ActionListener {
 		}
 		else if (e.getSource().equals(this.btnSearchGenre)) {
 			this.lbRelatedBooks.setText("Available Genres");
+			this.tfGenre.setText("");
+			this.tfGenre.setEditable(true);
 			this.taInfo.setText("");
 			this.taOutput.setText("");
 			this.tfBook.setText("");
@@ -510,6 +543,21 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.btnCancel.setEnabled(true);
 			if (this.tfGenre.equals("")) {
 				this.taOutput.setText("Please enter a valid genre");
+			}
+			else {
+				this.authorModel.clear();
+				this.bookNodeModel.clear();
+				this.searchForGenreFunction = true;
+				this.allBooksFunction = false;
+				this.addGenreFunction = false;
+				this.relatedFunction = false;
+				this.addAuthorFunction = false;
+				this.lbRelatedBooks.setText("Genres:");
+				this.jListRelatedBooks.setModel(this.bookNodeModelGenre);
+				for (String string : removeDuplicateGenresInList()) {
+					this.bookNodeModelGenre.addElement(string);
+
+				}
 			}
 		}
 		else if (e.getSource().equals(this.btnGenre)) {
@@ -535,8 +583,8 @@ public class PanelControl extends JPanel implements ActionListener {
 				addHashKey(bookToAdd);
 				enableComponents();
 				this.taOutput.setText("Book: " + bookToAdd.getBookTitle() + 
-										" Author " + bookToAdd.getAuthor() + 
-										" Genres: " + bookToAdd.getKeywords() + " has been added.");
+						" Author " + bookToAdd.getAuthor() + 
+						" Genres: " + bookToAdd.getKeywords() + " has been added.");
 			}
 		}
 		else if (e.getSource().equals(this.btnCancel)) {
