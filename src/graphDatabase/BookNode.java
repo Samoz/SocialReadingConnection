@@ -89,6 +89,13 @@ public class BookNode implements BookNodeInterface {
 				}
 			}
 		}
+		/*for (int i = 0; i < this.keyWords.size(); i++) {
+			for (int j = 0; j < keyWords.length; j++) {
+				if (similarNode.getKeywords()[i].equals(this.getKeywords()[j])) {
+					counterKW++;
+				}
+			}
+		}*/
 		if (counterKW >= 3) {
 			this.similarBooks.add(similarNode);
 			similarNode.getSimilarBooks().add(this);
