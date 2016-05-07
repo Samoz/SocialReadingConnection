@@ -44,7 +44,7 @@ public class PanelControl extends JPanel implements ActionListener {
 	private HashMapTitle hashTitle;
 	private HashMapGenre hashGenre;
 	private BookNode actualBook;
-
+	
 	private boolean relatedFunction;
 	private boolean allBooksFunction;
 	private boolean addGenreFunction;
@@ -521,6 +521,7 @@ public class PanelControl extends JPanel implements ActionListener {
 		}
 		else if (e.getSource().equals(this.btnSearchGenre)) {
 			this.lbRelatedBooks.setText("Available Genres");
+			this.btnSearchGenre.setEnabled(false);
 			this.tfGenre.setText("");
 			this.tfGenre.setEditable(true);
 			this.taInfo.setText("");
@@ -535,7 +536,6 @@ public class PanelControl extends JPanel implements ActionListener {
 			this.btnAuthor.setEnabled(false);
 			this.btnGenre.setEnabled(false);
 			this.btnAllAuthors.setEnabled(false);
-			this.btnSearch.setEnabled(false);
 			this.btnClear.setEnabled(true);
 			if (this.tfGenre.equals("")) {
 				this.taOutput.setText("Please enter a valid genre");
