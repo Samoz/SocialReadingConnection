@@ -395,6 +395,7 @@ public class PanelControl extends JPanel implements ActionListener {
 					Object selectionValue = jListRelatedBooks.getSelectedValue();
 					if (!e.getValueIsAdjusting()) {
 						if (selectionValue != null) {
+							taInfo.setText("");
 							for (BookNode bookNode : searchByGenre(selectionValue.toString())) {
 								taInfo.append(bookNode.toString() + "\n");
 							}
